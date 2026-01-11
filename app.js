@@ -11,9 +11,26 @@ import { InfoModel } from "./models/DeviceInfo.js";
 dotenv.config();
 
 const app = express();
-
+// Configure CORS properly
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://capture-frontend-ten.vercel.app",
+];
 // Middleware
-app.use(cors({ origin: "*" }));
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+      "X-Requested-With",
+      "X-Last-Check",
+    ],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  })
+);
 app.use(bodyParser.json({ limit: "10mb" }));
 
 app.use((err, req, res, next) => {
