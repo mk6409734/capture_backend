@@ -15,6 +15,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "https://capture-frontend-ten.vercel.app",
+  "https://q0xtw0c9-5173.inc1.devtunnels.ms"
 ];
 // Middleware
 app.use(
